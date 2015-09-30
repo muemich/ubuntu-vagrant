@@ -16,17 +16,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_check_update = true
   # Iterate through entries in YAML file
   servers.each do |servers|
+    #config.vm.define no-proxy["name"] do |srv|
     config.vm.define servers["name"] do |srv|
       srv.vm.box = servers["box"]
-      srv.vm.provision :shell, path: "bootstrap.sh"
-      srv.vm.network "private_network", ip: servers["ip"]
-      if servers["proxy"] == 'on'
-         if Vagrant.has_plugin?("vagrant-proxyconf")
-            config.proxy.http = "http://proxy.vptt.ch:80"
-            config.proxy.https = "http://proxy.vptt.ch:80"
-            config.proxy.no_proxy = "localhost,.vptt.ch,.swissptt.ch,.corproot.net"
-         end
+      if servers["proxy"] == "0"
+        srv.vm.provision :shell, path: "bootstrap.sh"
+      else servers["proxy"] == "0"
+        srv.vm.provision :shell, path: "bootstrap-proxy.sh"
       end
+      srv.vm.network "private_network", ip: servers["ip"]
       srv.vm.provider :virtualbox do |vb|
         vb.name = servers["name"]
         vb.memory = servers["ram"]

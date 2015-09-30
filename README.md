@@ -14,7 +14,7 @@ Why
 
 USAGE
 -----
-```
+``` bash
 vagrant up
 vagrant ssh
 
@@ -29,8 +29,8 @@ ls /vagrant
 
 ## Change VM settings
 
-Change setting for like name, IP, RAM, proxy inside servers.yaml
-
+Change setting for like name, IP, RAM, if proxy is needed inside servers.yaml
+The proxy settings itselfe are inside bootstrap.sh
 TODO
 ----
 Use a more lightweight base image than Ubuntu 14.04

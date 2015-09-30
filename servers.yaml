@@ -3,9 +3,9 @@
   box: ubuntu/trusty64
   ram: 512
   ip: 172.17.9.101
-  proxy: on
+  proxy: 0
 - name: docker-02
   box: ubuntu/trusty64
   ram: 512
   ip: 172.17.9.102
-  proxy: on
+  proxy: 0
