@@ -1,3 +1,4 @@
 .vagrant
 Vagrantfile.bak
 vagrant.sh
+bootstrap-test.sh
