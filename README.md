@@ -1,7 +1,7 @@
 
 A quick way to setup a docker test environment. This tool
  * Creates a VM with the Ubuntu 14.04 (hashcorp/trusty box)
- * Pulls the latest docker release, fixes a few permissions and installs docker-compose. 
+ * Pulls the latest docker release, fixes a few permissions and installs docker-compose.
  * Pulls a small example container (alpine linux)
 
 Features
@@ -25,7 +25,11 @@ docker run --rm -it alpine sh
 # /vagrant gives accces to the host folder
 ls /vagrant
 ```
+---
 
+## Change VM settings
+
+Change setting for like name, IP, RAM, proxy inside servers.yaml
 
 TODO
 ----
