@@ -22,8 +22,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       if servers["proxy"] == "0"
         srv.vm.provision :shell, path: "bootstrap.sh"
       else servers["proxy"] == "0"
-        config.proxy.http = "http://proxy.vptt.ch:80"
-        config.proxy.https = "http://proxy.vptt.ch:80"
+        config.proxy.http = "http://<proxy>:80"
+        config.proxy.https = "http://<proxy>:80"
         config.proxy.no_proxy = "localhost,127.0.0.1,.example.com"
         srv.vm.provision :shell, path: "bootstrap-proxy.sh"
       end
