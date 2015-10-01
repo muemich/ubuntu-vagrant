@@ -19,12 +19,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #config.vm.define no-proxy["name"] do |srv|
     config.vm.define servers["name"] do |srv|
       srv.vm.box = servers["box"]
-      if servers["proxy"] == "0"
+      if servers["proxy"] == 0
         srv.vm.provision :shell, path: "bootstrap.sh"
-      else servers["proxy"] == "0"
-        config.proxy.http = "http://<proxy>:80"
-        config.proxy.https = "http://<proxy>:80"
-        config.proxy.no_proxy = "localhost,127.0.0.1,.example.com"
+      else servers["proxy"] == 1
+        if Vagrant.has_plugin?("vagrant-proxyconf")
+          config.proxy.http = "http://<proxy>:80"
+          config.proxy.https = "http://<proxy>:80"
+          config.proxy.no_proxy = "localhost,127.0.0.1,.example.com"
+        end
         srv.vm.provision :shell, path: "bootstrap-proxy.sh"
       end
       srv.vm.network "private_network", ip: servers["ip"]
